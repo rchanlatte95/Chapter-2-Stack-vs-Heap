@@ -17,23 +17,9 @@ namespace CHAPTER4
         public int NumIterations = 10000;
         public int ArraySize = 10000;
 
-        int[] heapArray1;
-        int[] heapArray2;
-        int[] heapArray3;
-
         private void Awake()
         {
             ResultText.text = "Ready\n";
-
-            heapArray1 = new int[ArraySize];
-            heapArray2 = new int[ArraySize];
-            heapArray3 = new int[ArraySize];
-
-            for (int i = 0; i < ArraySize; i++)
-            {
-                heapArray1[i] = Mathf.FloorToInt(UnityEngine.Random.value * 100);
-                heapArray2[i] = Mathf.FloorToInt(UnityEngine.Random.value * 100);
-            }
         }
 
         private void Start()
@@ -88,19 +74,6 @@ namespace CHAPTER4
             s += "Stack is " + (heapTime / stackTime).ToString("G4") + "x faster \n";
             ResultText.text = s;
         }
-
-        private void StackTest(ref Span<int> array1, ref Span<int> array2, ref Span<int> array3, int size)
-        {
-            for (int i = 0; i < size; i++)
-                array3[i] = array1[i] + array2[i];
-        }
-
-        private void HeapTest(int[] array1, int[] array2, int[] array3, int size)
-        {
-            for (int i = 0; i < size; i++)
-                array3[i] = array1[i] + array2[i];
-        }
-
     }
 
 }
