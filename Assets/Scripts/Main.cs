@@ -29,6 +29,15 @@ namespace CHAPTER4
 
         public void TestStackVsHeap()
         {
+            int stackResult = 0;
+            int heapResult = 0;
+            TestStackVsHeapWithResult(out stackResult, out heapResult);
+        }
+        void TestStackVsHeapWithResult(out int stackResult, out int heapResult)
+        {
+            stackResult = 0;
+            heapResult = 0;
+
             double heapTime = 0d;
             double stackTime = 0d;
 
@@ -66,6 +75,12 @@ namespace CHAPTER4
                 for (int i = 0; i < ArraySize; i++)
                     stackArray3[i] = stackArray1[i] + stackArray2[i];
                 stackTime += Time.realtimeSinceStartupAsDouble - time;
+
+                for (int i = 0; i < ArraySize; i++)
+                {
+                    stackResult += stackArray3[i];
+                    heapResult += heapArray3[i];
+                }
             }
 
             string s = "NumIterations " + NumIterations.ToString("N0") + "\n";
